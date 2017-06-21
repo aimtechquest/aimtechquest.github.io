@@ -31,21 +31,34 @@ function draw_board() {
 			table.deleteRow(0);
 		}
 		table.setAttribute('align', 'left');
+		table.setAttribute('cellspacing', '2');
 		for (var i = 0; i < team_count; ++i) {
+			var rowmult = 1 - (i % 2) / 20;
 			var row = table.insertRow(i);
 			var cell = row.insertCell(0);
 			var text = document.createTextNode(team_names[i]);
-			cell.style.setAttribute('align', 'right');
-			cell.style.setAttribute('color', 'black');
-			cell.style.setAttribute('background-color', 'white');
+			cell.style.setProperty('text-align', 'right');
+			cell.style.setProperty('color', 'black');
+			cell.style.setProperty('background-color',  "rgb(" + [255 * rowmult, 255 * rowmult, 255 * rowmult].map(Math.floor).join(',') + ")");
 			cell.appendChild(text);
 			for (var j = 0; j < task_count; ++j) {
+				var colmult = 1 - ((j + 1) % 2) / 20;
+				var mult = rowmult * colmult;
 				cell = row.insertCell(j + 1);
 				text = document.createTextNode(scores[i][j]);
-				cell.style.setAttribute('align', 'center');
-				cell.style.setAttribute('color', 'black');
-				cell.style.setAttribute('background-color', 'white');
-				cell.style.setAttribute('width', '70px');
+				var greenness = 0;
+				if (scores[i][j] > 0) {
+					greenness = scores[i][j] / max_scores[j];
+				}
+				var g = Math.floor(31 * greenness);
+				var bgcolor = "rgb(" + [(255 - 4 * g) * mult, (255 - g / 2) * mult, (255 - 4 * g) * mult].map(Math.floor).join(',') + ")";
+				var textcolor = "rgb(" + [0, Math.floor(g / 2), 0].join(',') + ")";
+				console.log(bgcolor);
+				cell.style.setProperty('text-align', 'center');
+				cell.style.setProperty('color', textcolor);
+				cell.style.setProperty('background-color', bgcolor);
+				cell.style.setProperty('width', '100px');
+				cell.style.setProperty('height', '50px');
 				cell.appendChild(text);
 			}
 			table.appendChild(row);
