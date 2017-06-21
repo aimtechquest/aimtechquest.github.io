@@ -33,9 +33,15 @@ function draw_board() {
 		table.setAttribute('width', '100%');
 		for (var i = 0; i < team_count; ++i) {
 			var row = table.insertRow(i);
+			var cell = row.insertCell(0);
+			var text = document.createTextNode(team_names[i]);
+			cell.setAttribute('align', 'right');
+			cell.setAttribute('color', 'black');
+			cell.setAttribute('background-color', 'white');
+			cell.appendChild(text);
 			for (var j = 0; j < task_count; ++j) {
-				var cell = row.insertCell(j + 1);
-				var text = document.createTextNode(scores[i][j]);
+				cell = row.insertCell(j + 1);
+				text = document.createTextNode(scores[i][j]);
 				cell.setAttribute('align', 'center');
 				cell.setAttribute('color', 'black');
 				cell.setAttribute('background-color', 'white');
