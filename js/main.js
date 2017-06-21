@@ -30,22 +30,22 @@ function draw_board() {
 		while (table.rows[0]) {
 			table.deleteRow(0);
 		}
-		table.setAttribute('width', '100%');
 		table.setAttribute('align', 'left');
 		for (var i = 0; i < team_count; ++i) {
 			var row = table.insertRow(i);
 			var cell = row.insertCell(0);
 			var text = document.createTextNode(team_names[i]);
-			cell.setAttribute('align', 'right');
-			cell.setAttribute('color', 'black');
-			cell.setAttribute('background-color', 'white');
+			cell.style.setAttribute('align', 'right');
+			cell.style.setAttribute('color', 'black');
+			cell.style.setAttribute('background-color', 'white');
 			cell.appendChild(text);
 			for (var j = 0; j < task_count; ++j) {
 				cell = row.insertCell(j + 1);
 				text = document.createTextNode(scores[i][j]);
-				cell.setAttribute('align', 'center');
-				cell.setAttribute('color', 'black');
-				cell.setAttribute('background-color', 'white');
+				cell.style.setAttribute('align', 'center');
+				cell.style.setAttribute('color', 'black');
+				cell.style.setAttribute('background-color', 'white');
+				cell.style.setAttribute('width', '70px');
 				cell.appendChild(text);
 			}
 			table.appendChild(row);
