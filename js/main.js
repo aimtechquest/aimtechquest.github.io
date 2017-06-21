@@ -31,6 +31,7 @@ function draw_board() {
 			table.deleteRow(0);
 		}
 		table.setAttribute('width', '100%');
+		table.setAttribute('align', 'left');
 		for (var i = 0; i < team_count; ++i) {
 			var row = table.insertRow(i);
 			var cell = row.insertCell(0);
