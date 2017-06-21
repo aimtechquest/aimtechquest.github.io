@@ -1,0 +1,5 @@
+Team 01	Team 02	Team 03	Sample team
+-	-	10	-
+-	20	-	-
+-	-	10	-
+2	10	10	5
