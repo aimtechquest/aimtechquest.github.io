@@ -53,7 +53,6 @@ function draw_board() {
 				var g = Math.floor(31 * greenness);
 				var bgcolor = "rgb(" + [(255 - 4 * g) * mult, (255 - g / 2) * mult, (255 - 4 * g) * mult].map(Math.floor).join(',') + ")";
 				var textcolor = "rgb(" + [0, Math.floor(g / 2), 0].join(',') + ")";
-				console.log(bgcolor);
 				cell.style.setProperty('text-align', 'center');
 				cell.style.setProperty('color', textcolor);
 				cell.style.setProperty('background-color', bgcolor);
