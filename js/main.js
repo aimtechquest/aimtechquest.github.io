@@ -26,8 +26,10 @@ function draw_board() {
 			}
 		}
 
-		$("#scoreboard tr").remove();
 		var table = document.getElementById("scoreboard");
+		while (table.rows[0]) {
+			table.deleteRow(0);
+		}
 		table.setAttribute('width', '100%');
 		for (var i = 0; i < team_count; ++i) {
 			var row = table.insertRow(i);
