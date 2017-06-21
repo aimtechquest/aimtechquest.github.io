@@ -1,11 +1,7 @@
 function draw_board() {
 	var client = new XMLHttpRequest();
 	client.open('GET', 'scores.txt');
-	client.onreadystatechange = function() {
-		if (this.readyState != this.HEADERS_RECEIVED) {
-			alert("Some error has occurred, sorry");
-			return;
-		}
+	client.onload = function() {
 		var lines = client.responseText.split('\n');
 		var team_names = lines[0].split('\t');
 		var scores = [];
