@@ -3,9 +3,10 @@ function draw_board() {
 	client.open('GET', 'scores.txt');
 	client.onload = function() {
 		var lines = client.responseText.split('\n');
-		var team_names = lines[0].split('\t');
+		var task_names = lines[0].split('\t');
+		var team_names = lines[1].split('\t');
 		var scores = [];
-		for (var i = 1; i < lines.length; ++i) {
+		for (var i = 2; i < lines.length; ++i) {
 			scores.push(lines[i].split('\t').map(function(s) {
 				if (isNaN(Number(s))) {
 					return 0;
@@ -16,7 +17,7 @@ function draw_board() {
 		}
 
 		var team_count = team_names.length;
-		var task_count = scores[0].length;
+		var task_count = task_names.length;
 
 		var max_scores = [];
 		for (var i = 0; i < task_count; ++i) {
@@ -32,9 +33,22 @@ function draw_board() {
 		}
 		table.setAttribute('align', 'left');
 		table.setAttribute('cellspacing', '2');
+		var row = table.insertRow(0);
+		var cell = row.insertCell(0);
+		cell.style.setProperty('text-align', 'center');
+		cell.style.setProperty('color', 'black');
+		cell.style.setProperty('background-color',  'rgb(255, 210, 128)');
+		for (var i = 0; i < task_count; ++i) {
+			cell = row.insertCell(i + 1);
+			cell.style.setProperty('text-align', 'center');
+			cell.style.setProperty('color', 'black');
+			cell.style.setProperty('background-color',  'rgb(255, 210, 128)');
+			var text = document.createTextNode(task_names[i]);
+			cell.appendChild(text);
+		}
 		for (var i = 0; i < team_count; ++i) {
 			var rowmult = 1 - (i % 2) / 20;
-			var row = table.insertRow(i);
+			var row = table.insertRow(i + 1);
 			var cell = row.insertCell(0);
 			var text = document.createTextNode(team_names[i]);
 			cell.style.setProperty('text-align', 'right');
