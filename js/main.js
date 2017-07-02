@@ -37,12 +37,12 @@ function draw_board() {
 		var cell = row.insertCell(0);
 		cell.style.setProperty('text-align', 'center');
 		cell.style.setProperty('color', 'black');
-		cell.style.setProperty('background-color',  'rgb(255, 210, 128)');
+		cell.style.setProperty('background-color',  'rgb(255, 255, 255)');
 		for (var i = 0; i < task_count; ++i) {
 			cell = row.insertCell(i + 1);
 			cell.style.setProperty('text-align', 'center');
 			cell.style.setProperty('color', 'black');
-			cell.style.setProperty('background-color',  'rgb(255, 210, 128)');
+			cell.style.setProperty('background-color',  'rgb(255, 225, 170)');
 			var text = document.createTextNode(task_names[i]);
 			cell.appendChild(text);
 		}
